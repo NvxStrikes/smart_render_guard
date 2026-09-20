@@ -1,52 +1,90 @@
-# 🛡️ Smart Render Guard — Beta Testing Build
+# 🛡️ Smart Render Guard Lite
 
-Smart Render Guard is an intelligent diagnostics, safety validation, and render optimization toolkit for Blender.
+**Free & Open Source Scene Crash Scanner & Memory Optimizer for Blender**
 
-> [!IMPORTANT]
-> **BETA BUILD LIFE-LIMIT NOTICE**
-> * **Expiration Date**: This Beta testing build will automatically expire and lock itself on **July 25, 2026** (30 days from compilation).
-> * **Distribution Prohibited**: Distributing this Beta build or sharing it outside the authorized testing group is strictly prohibited.
-> * **Reverse Engineering**: Reverse engineering, copying, or modifying the source code is strictly prohibited (to the maximum extent permitted under GPL v3 compliance).
-> * **Updates**: This is a static Beta build. No new updates, patches, or modifications will be added to this repository or build.
+[![Blender Version](https://img.shields.io/badge/Blender-3.6%20%7C%204.x%20%7C%205.x-orange.svg)](https://www.blender.org/)
+[![License](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20Linux%20%7C%20macOS-brightgreen.svg)]()
+[![Edition](https://img.shields.io/badge/Edition-Lite%20(Free)-green.svg)]()
 
----
-
-## 📝 Submit Your Review & Feedback
-Your feedback is extremely important to help us refine the final release. If you encounter any bugs, crashes, performance improvements, or have suggestions, please submit your feedback:
-👉 **[Beta Feedback & Review Form](https://forms.gle/v9u5ptPkaWd2V5Qc6)**
-
-You can also submit feedback directly from the Blender UI:
-* Go to **Edit > Preferences > Add-ons > Smart Render Guard** and click the **Submit Beta Feedback** button.
-* Or use the **Submit Feedback** button directly in the active Viewport N-Panel.
+Smart Render Guard Lite is an intelligent diagnostic and scene safety addon for Blender. It helps 3D artists avoid render crashes, identify scene bottlenecks, validate assets before initiating long render jobs, and purge unused memory with a single click.
 
 ---
 
-## 🚀 How to Install & Test
+## ✨ Features (Lite Edition)
 
-### Step 1: Download the Addon
-Download the compiled ZIP file directly from this repository:
-* Download [smart_render_guard_beta.zip](smart_render_guard_beta.zip)
+### 🔍 Pre-Render Scene Validation
+Inspects your scene for the most frequent causes of render crashes and render failures:
+- **Missing External Textures**: Flags unlinked or broken image file paths before you render.
+- **Broken Animation Drivers**: Detects invalid driver targets across objects and material node trees.
+- **Missing Linked Libraries**: Verifies linked `.blend` libraries and unresolvable linked assets.
+- **High-Risk Modifier Stacks**: Identifies heavy subdivision levels, complex particle settings, and geometry spikes that risk out-of-memory crashes.
 
-### Step 2: Install in Blender
-1. Open Blender.
-2. Go to **Edit > Preferences > Add-ons**.
-3. Click the **Install...** button in the top right corner.
-4. Select the downloaded `smart_render_guard_beta.zip` file and click **Install Add-on**.
-5. Enable the addon by checking the box next to **Smart Render Guard Beta**.
+### 🧹 Memory Cache Purger
+- Automatically cleans unlinked meshes, textures, orphan data blocks, and leftover image cache from Blender memory.
+- Reduces memory bloat and prevents RAM/VRAM exhaustion during intensive viewport sessions.
 
-### Step 3: Run the Diagnostics
-1. Open any heavy Blender scene.
-2. In the 3D Viewport, press `N` to open the sidebar and navigate to the **Render Guard** tab.
-3. Click **🔍 SCAN SCENE** to run the diagnostics.
-4. Review the overall risk status (SAFE, WARNING, or CRITICAL) and the detailed diagnostics (VRAM usage, system RAM, total triangles, and textures).
+### 📊 Real-Time Hardware & Scene Diagnostics
+- **VRAM & RAM Monitoring**: Displays available hardware memory, system RAM load, and GPU specifications.
+- **Geometry & Texture Breakdown**: Instant overview of total evaluated triangles and texture memory footprint.
+- **Color-Coded Risk Indicators**: Instant visual status (**SAFE**, **WARNING**, or **CRITICAL**) to gauge scene stability.
 
-### Step 4: Validate & Render Safely
-1. In the sidebar panel, navigate to the **Pre-Render Validation** section.
-2. Click **Scan Scene Now** to check for broken drivers, missing libraries, missing textures, and heavy/unoptimized modifiers.
-3. Click **🎬 SAFE RENDER** to perform a final safety validation and run the render.
+### 🎬 Safe Render Workflow
+- Initiates pre-render safety checks whenever you trigger a render to protect your system from freeze-ups.
 
 ---
 
-## 💡 Quick Tips for Testing
-* **Check the System Consoles**: Press **Window > Toggle System Console** in Blender to view detailed execution logs with the `[SRG]` prefix.
-* **Force Expiration Check**: If you want to test what happens when the Beta expires, you can temporarily change your system clock to past July 25, 2026. The addon panels will disable/gray out, and all operator runs and render hooks will safely block.
+## 🚀 Installation
+
+### Option A: Install from a ZIP
+1. Download or package the `smart_render_guard` folder as a `.zip` archive.
+2. In Blender, navigate to **Edit > Preferences > Add-ons**.
+3. Click the **Install...** button (or dropdown in Blender 4.2+), choose the zip file, and click **Install Add-on**.
+4. Enable the checkbox for **Smart Render Guard Lite**.
+
+### Option B: Direct Folder Installation
+Copy the `smart_render_guard` directory directly into your Blender addons folder:
+- **Windows**: `%APPDATA%\Blender Foundation\Blender\<version>\scripts\addons\smart_render_guard`
+- **macOS**: `~/Library/Application Support/Blender/<version>/scripts/addons/smart_render_guard`
+- **Linux**: `~/.config/blender/<version>/scripts/addons/smart_render_guard`
+
+Restart Blender or click **Refresh** in the Add-ons preference window, then enable the addon.
+
+---
+
+## 📖 Usage Guide
+
+1. Open any Blender scene.
+2. In the 3D Viewport, press **`N`** to expand the sidebar panel.
+3. Select the **Render Guard** tab.
+4. Click **🔍 SCAN SCENE** to evaluate scene complexity, VRAM, and RAM usage.
+5. In the **Pre-Render Validation** section, click **Scan Scene Now** to check for missing assets and broken drivers.
+6. Click **⚡ AUTO-FIX SAFE ISSUES** or **Purge Memory Cache** to optimize memory immediately.
+7. Click **🎬 SAFE RENDER** to validate and execute your render safely.
+
+---
+
+## 🔄 Commercial Editions Comparison
+
+Need deeper automation and automated batch optimization? Compare Smart Render Guard editions:
+
+| Feature | Lite (Free) | Basic | Pro |
+| :--- | :---: | :---: | :---: |
+| **Real-Time RAM & VRAM Diagnostics** | ✅ | ✅ | ✅ |
+| **Pre-Render Asset & Driver Validation** | ✅ | ✅ | ✅ |
+| **One-Click Memory Cache Purger** | ✅ | ✅ | ✅ |
+| **Automated Geometry Instancing** | ❌ | ✅ | ✅ |
+| **Texture Downscaler (128px–4K)** | ❌ | ✅ | ✅ |
+| **Cycles Light Path Throttler** | ❌ | ✅ | ✅ |
+| **Missing Texture Locate & Relink Helper** | ❌ | ✅ | ✅ |
+| **Shader Graph Simplifier & Restorer** | ❌ | ❌ | ✅ |
+| **Black Box Crash Forensics Logger** | ❌ | ❌ | ✅ |
+| **Unattended CLI Autopilot** | ❌ | ❌ | ✅ |
+
+Visit [novastrikes.com](https://novastrikes.com) for details on Basic and Pro editions.
+
+---
+
+## 📄 License
+
+This project is licensed under the **GNU General Public License v3.0 (GPL-3.0)**. See the [LICENSE](LICENSE) file for details.
